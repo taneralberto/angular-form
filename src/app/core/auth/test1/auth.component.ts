@@ -12,7 +12,7 @@ interface AuthForm {
   styleUrls: ['./auth.component.css'],
   imports: [ReactiveFormsModule]
 })
-export class AuthComponent {
+export default class AuthComponent {
   authForm!: FormGroup<AuthForm>;
 
   get form() {
@@ -30,6 +30,7 @@ export class AuthComponent {
   }
 
   onSubmit() {
-    console.log(this.authForm.value);
+    console.log('this.authForm.value', this.authForm.value);
+    console.log('this.form', this.form)
   }
 }
