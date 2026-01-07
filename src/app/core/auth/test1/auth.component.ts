@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 
 interface AuthForm {
   email: FormControl<string>;
@@ -10,6 +10,7 @@ interface AuthForm {
   selector: 'app-auth',
   templateUrl: './auth.component.html',
   styleUrls: ['./auth.component.css'],
+  imports: [ReactiveFormsModule]
 })
 export class AuthComponent {
   authForm!: FormGroup<AuthForm>;
@@ -26,5 +27,9 @@ export class AuthComponent {
         nonNullable: true,
       }),
     });
+  }
+
+  onSubmit() {
+    console.log(this.authForm.value);
   }
 }
