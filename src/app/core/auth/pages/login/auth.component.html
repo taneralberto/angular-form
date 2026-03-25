@@ -1,13 +1,59 @@
-<form [formGroup]="authForm" (ngSubmit)="onSubmit()">
-  <div>
-    <label for="email">Email</label>
-    <input type="text" id="email" formControlName="email" />
+<div class="login-container d-flex">
+
+  <!-- Left column: login form -->
+  <div class="login-form-col d-flex align-items-center justify-content-center">
+    <div class="login-form-inner w-100">
+      <h4 class="mb-1 fw-semibold">Sign In</h4>
+      <p class="text-muted mb-4">Welcome back! Please enter your details.</p>
+      <form [formGroup]="authForm" (ngSubmit)="onSubmit()">
+        <div class="mb-3">
+          <label for="email" class="form-label">Email</label>
+          <input
+            type="email"
+            id="email"
+            class="form-control"
+            [class.is-invalid]="form.email.invalid && form.email.touched"
+            formControlName="email"
+            placeholder="you@example.com"
+          />
+          @if (form.email.invalid && form.email.touched) {
+            <div class="invalid-feedback">Email is required.</div>
+          }
+        </div>
+        <div class="mb-4">
+          <label for="password" class="form-label">Password</label>
+          <input
+            type="password"
+            id="password"
+            class="form-control"
+            [class.is-invalid]="form.password.invalid && form.password.touched"
+            formControlName="password"
+            placeholder="••••••••"
+          />
+          @if (form.password.invalid && form.password.touched) {
+            <div class="invalid-feedback">Password is required.</div>
+          }
+        </div>
+        <button type="submit" class="btn btn-dark w-100">Login</button>
+      </form>
+    </div>
   </div>
 
-  <div>
-    <label for="password">Password</label>
-    <input type="password" id="password" formControlName="password" />
+  <!-- Right column: decorative brand panel (hidden on mobile) -->
+  <div class="login-brand-col d-none d-md-flex align-items-center justify-content-center">
+    <div class="brand-content text-center text-white">
+      <div class="brand-icon mb-4">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none" aria-hidden="true">
+          <circle cx="32" cy="32" r="30" stroke="rgba(255,255,255,0.25)" stroke-width="2"/>
+          <path d="M20 44 C20 34 28 26 32 26 C36 26 44 34 44 44" stroke="white" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+          <circle cx="32" cy="20" r="7" stroke="white" stroke-width="2.5" fill="none"/>
+        </svg>
+      </div>
+      <h2 class="brand-title fw-bold mb-3">Welcome Back</h2>
+      <p class="brand-subtitle">Sign in to access your account<br>and continue where you left off.</p>
+      <div class="brand-divider my-4"></div>
+      <p class="brand-tagline fst-italic">"Your journey continues here."</p>
+    </div>
   </div>
 
-  <button type="submit">Login</button>
-</form>
+</div>

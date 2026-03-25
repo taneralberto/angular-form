@@ -6,11 +6,11 @@ import { FooterLayoutComponent } from '../../components/footer/footer.component'
   selector: 'app-common-layout',
   imports: [HeaderLayoutComponent, FooterLayoutComponent],
   template: `
-    <div class="common-layout">
+    <div class="d-flex flex-column min-vh-100">
       <app-header-layout></app-header-layout>
-
-      <ng-content></ng-content>
-
+      <main class="flex-grow-1">
+        <ng-content></ng-content>
+      </main>
       <app-footer-layout></app-footer-layout>
     </div>
   `,

@@ -1,0 +1,108 @@
+/* ── Two-column login layout ── */
+
+.login-container {
+  min-height: calc(100vh - 120px); /* account for header + footer */
+  flex: 1;
+}
+
+/* ── Left column: form ── */
+
+.login-form-col {
+  flex: 1;
+  padding: 3rem 2rem;
+  background: #fff;
+}
+
+.login-form-inner {
+  max-width: 400px;
+}
+
+/* ── Right column: brand panel ── */
+
+.login-brand-col {
+  flex: 1;
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 35%, #3b1f6b 70%, #6a2bbd 100%);
+}
+
+/* Large decorative circles via pseudo-elements */
+.login-brand-col::before {
+  content: '';
+  position: absolute;
+  width: 480px;
+  height: 480px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.04);
+  top: -120px;
+  right: -140px;
+  pointer-events: none;
+}
+
+.login-brand-col::after {
+  content: '';
+  position: absolute;
+  width: 320px;
+  height: 320px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.06);
+  bottom: -80px;
+  left: -80px;
+  pointer-events: none;
+}
+
+/* Brand content sits above the pseudo-element overlays */
+.brand-content {
+  position: relative;
+  z-index: 1;
+  padding: 2rem;
+  max-width: 360px;
+}
+
+/* SVG icon size */
+.brand-icon svg {
+  width: 80px;
+  height: 80px;
+  filter: drop-shadow(0 0 16px rgba(180, 130, 255, 0.5));
+}
+
+.brand-title {
+  font-size: 2rem;
+  letter-spacing: -0.02em;
+}
+
+.brand-subtitle {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.brand-divider {
+  width: 48px;
+  height: 2px;
+  background: rgba(255, 255, 255, 0.3);
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 2px;
+}
+
+.brand-tagline {
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+/* ── Responsive: on small screens only the form shows ── */
+
+@media (max-width: 767.98px) {
+  .login-container {
+    min-height: calc(100vh - 120px);
+  }
+
+  .login-form-col {
+    padding: 2rem 1.25rem;
+  }
+
+  .login-form-inner {
+    max-width: 100%;
+  }
+}
